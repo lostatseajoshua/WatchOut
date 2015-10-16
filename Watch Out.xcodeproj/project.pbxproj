@@ -16,6 +16,12 @@
 		670B9D401BC0C7B3007A4CA6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 670B9D3E1BC0C7B3007A4CA6 /* LaunchScreen.storyboard */; };
 		670B9D4B1BC0C7B3007A4CA6 /* Watch_OutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670B9D4A1BC0C7B3007A4CA6 /* Watch_OutTests.swift */; };
 		670B9D561BC0C7B3007A4CA6 /* Watch_OutUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670B9D551BC0C7B3007A4CA6 /* Watch_OutUITests.swift */; };
+		677F3AB21BC0C97F003F52AD /* CircleNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677F3AB11BC0C97F003F52AD /* CircleNode.swift */; settings = {ASSET_TAGS = (); }; };
+		677F3AB41BC0C9B9003F52AD /* FlyingObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677F3AB31BC0C9B9003F52AD /* FlyingObject.swift */; settings = {ASSET_TAGS = (); }; };
+		677F3ABC1BC0CABD003F52AD /* ApplicationDefinitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677F3ABB1BC0CABD003F52AD /* ApplicationDefinitions.swift */; settings = {ASSET_TAGS = (); }; };
+		678D41951BC0E9D10005B96E /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 678D41941BC0E9D10005B96E /* GameLogic.swift */; settings = {ASSET_TAGS = (); }; };
+		67C1EABD1BC18DE300A27994 /* MagicParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67C1EABB1BC18DE300A27994 /* MagicParticle.sks */; settings = {ASSET_TAGS = (); }; };
+		67C1EABE1BC18DE300A27994 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 67C1EABC1BC18DE300A27994 /* spark.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,12 @@
 		670B9D511BC0C7B3007A4CA6 /* Watch OutUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Watch OutUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		670B9D551BC0C7B3007A4CA6 /* Watch_OutUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Watch_OutUITests.swift; sourceTree = "<group>"; };
 		670B9D571BC0C7B3007A4CA6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		677F3AB11BC0C97F003F52AD /* CircleNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleNode.swift; sourceTree = "<group>"; };
+		677F3AB31BC0C9B9003F52AD /* FlyingObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlyingObject.swift; sourceTree = "<group>"; };
+		677F3ABB1BC0CABD003F52AD /* ApplicationDefinitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApplicationDefinitions.swift; path = ../ApplicationDefinitions.swift; sourceTree = "<group>"; };
+		678D41941BC0E9D10005B96E /* GameLogic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		67C1EABB1BC18DE300A27994 /* MagicParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MagicParticle.sks; sourceTree = "<group>"; };
+		67C1EABC1BC18DE300A27994 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +113,13 @@
 		670B9D301BC0C7B3007A4CA6 /* Watch Out */ = {
 			isa = PBXGroup;
 			children = (
+				677F3ABB1BC0CABD003F52AD /* ApplicationDefinitions.swift */,
 				670B9D311BC0C7B3007A4CA6 /* AppDelegate.swift */,
-				670B9D331BC0C7B3007A4CA6 /* GameScene.sks */,
-				670B9D351BC0C7B3007A4CA6 /* GameScene.swift */,
-				670B9D371BC0C7B3007A4CA6 /* GameViewController.swift */,
-				670B9D391BC0C7B3007A4CA6 /* Main.storyboard */,
-				670B9D3C1BC0C7B3007A4CA6 /* Assets.xcassets */,
-				670B9D3E1BC0C7B3007A4CA6 /* LaunchScreen.storyboard */,
-				670B9D411BC0C7B3007A4CA6 /* Info.plist */,
+				677F3AB81BC0CA26003F52AD /* Model */,
+				677F3AB01BC0C95C003F52AD /* Node */,
+				677F3AB91BC0CA3A003F52AD /* Presentation */,
+				677F3AB71BC0CA05003F52AD /* Scene */,
+				677F3ABA1BC0CA52003F52AD /* Supporting Files */,
 			);
 			path = "Watch Out";
 			sourceTree = "<group>";
@@ -129,6 +140,53 @@
 				670B9D571BC0C7B3007A4CA6 /* Info.plist */,
 			);
 			path = "Watch OutUITests";
+			sourceTree = "<group>";
+		};
+		677F3AB01BC0C95C003F52AD /* Node */ = {
+			isa = PBXGroup;
+			children = (
+				677F3AB11BC0C97F003F52AD /* CircleNode.swift */,
+				677F3AB31BC0C9B9003F52AD /* FlyingObject.swift */,
+			);
+			name = Node;
+			sourceTree = "<group>";
+		};
+		677F3AB71BC0CA05003F52AD /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				670B9D351BC0C7B3007A4CA6 /* GameScene.swift */,
+				670B9D331BC0C7B3007A4CA6 /* GameScene.sks */,
+			);
+			name = Scene;
+			sourceTree = "<group>";
+		};
+		677F3AB81BC0CA26003F52AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				678D41941BC0E9D10005B96E /* GameLogic.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		677F3AB91BC0CA3A003F52AD /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				670B9D371BC0C7B3007A4CA6 /* GameViewController.swift */,
+				670B9D391BC0C7B3007A4CA6 /* Main.storyboard */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		677F3ABA1BC0CA52003F52AD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				670B9D3C1BC0C7B3007A4CA6 /* Assets.xcassets */,
+				670B9D3E1BC0C7B3007A4CA6 /* LaunchScreen.storyboard */,
+				670B9D411BC0C7B3007A4CA6 /* Info.plist */,
+				67C1EABB1BC18DE300A27994 /* MagicParticle.sks */,
+				67C1EABC1BC18DE300A27994 /* spark.png */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +256,7 @@
 				TargetAttributes = {
 					670B9D2D1BC0C7B3007A4CA6 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 39WG57SP6D;
 					};
 					670B9D451BC0C7B3007A4CA6 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -235,7 +294,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				670B9D341BC0C7B3007A4CA6 /* GameScene.sks in Resources */,
+				67C1EABE1BC18DE300A27994 /* spark.png in Resources */,
 				670B9D401BC0C7B3007A4CA6 /* LaunchScreen.storyboard in Resources */,
+				67C1EABD1BC18DE300A27994 /* MagicParticle.sks in Resources */,
 				670B9D3D1BC0C7B3007A4CA6 /* Assets.xcassets in Resources */,
 				670B9D3B1BC0C7B3007A4CA6 /* Main.storyboard in Resources */,
 			);
@@ -263,8 +324,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				670B9D361BC0C7B3007A4CA6 /* GameScene.swift in Sources */,
+				677F3ABC1BC0CABD003F52AD /* ApplicationDefinitions.swift in Sources */,
 				670B9D381BC0C7B3007A4CA6 /* GameViewController.swift in Sources */,
+				677F3AB41BC0C9B9003F52AD /* FlyingObject.swift in Sources */,
 				670B9D321BC0C7B3007A4CA6 /* AppDelegate.swift in Sources */,
+				677F3AB21BC0C97F003F52AD /* CircleNode.swift in Sources */,
+				678D41951BC0E9D10005B96E /* GameLogic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,10 +471,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Watch Out/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jaapps.Watch-Out";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -417,10 +484,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "Watch Out/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jaapps.Watch-Out";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -493,6 +562,7 @@
 				670B9D5C1BC0C7B3007A4CA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		670B9D5D1BC0C7B3007A4CA6 /* Build configuration list for PBXNativeTarget "Watch OutTests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +571,7 @@
 				670B9D5F1BC0C7B3007A4CA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		670B9D601BC0C7B3007A4CA6 /* Build configuration list for PBXNativeTarget "Watch OutUITests" */ = {
 			isa = XCConfigurationList;
@@ -509,6 +580,7 @@
 				670B9D621BC0C7B3007A4CA6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
