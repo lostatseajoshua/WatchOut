@@ -9,5 +9,17 @@
 import Foundation
 
 class GameLogic: NSObject {
-    var score = 0
+    private var score = 0
+    
+    var gameScore: Int {
+        return score
+    }
+    
+    func resetScore() {
+        score = 0
+    }
+    
+    func appendScore() {
+        self.score++
+    }
 }

@@ -48,7 +48,7 @@ class FlyingObject: SKShapeNode {
         
         let points = createRandomPointsToMoveOnBounds(bounds)
         self.position = points.0
-        let action = SKAction.moveTo(points.1, duration: 3)
+        let action = SKAction.moveTo(points.1, duration: 2)
         self.runAction(action, completion: {
             self.removeFromParent()
         })
