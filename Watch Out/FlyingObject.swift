@@ -9,7 +9,7 @@
 import UIKit
 import SpriteKit
 
-class FlyingObject: SKShapeNode {
+class FlyingObject: SKShapeNode, RandomPositionGenerator {
     
     private var color: UIColor {
         get {
@@ -54,35 +54,6 @@ class FlyingObject: SKShapeNode {
         })
     }
     
-//    func followRandomPathInBounds(bounds: CGRect) {
-//        let followPath = SKAction.followPath(createRandomLinePathInBounds(bounds), duration: 4)
-//        let moveToPoint = SKAction.moveTo(createRandomPointWithinBounds(bounds), duration: 2)
-//        self.runAction(moveToPoint)
-//        self.removeFromParent()
-//    }
-    
-    func createRandomLinePathInBounds(bounds: CGRect) -> CGPath {
-        let randomPath = UIBezierPath()
-        randomPath.moveToPoint(createRandomPointWithinBounds(bounds))
-        randomPath.addLineToPoint(createRandomPointWithinBounds(bounds))
-        return randomPath.CGPath
-    }
-    
-    func createRandomPathInBounds(bounds: CGRect) -> CGPath {
-        let randomPath = UIBezierPath()
-        randomPath.moveToPoint(createRandomPointWithinBounds(bounds))
-        randomPath.addCurveToPoint(createRandomPointWithinBounds(bounds), controlPoint1: createRandomPointWithinBounds(bounds), controlPoint2: createRandomPointWithinBounds(bounds))
-        return randomPath.CGPath
-    }
-    
-    func createRandomPointWithinBounds(bounds: CGRect) -> CGPoint {
-        let randomX = arc4random_uniform(UInt32(bounds.width))
-        let randomY = arc4random_uniform(UInt32(bounds.height))
-        
-        let randomPoint = CGPointMake(CGFloat(randomX), CGFloat(randomY))
-        return randomPoint
-    }
-    
     func createRandomPointsToMoveOnBounds(bounds: CGRect) -> (CGPoint,CGPoint) {
         if let pathToMoveOn = PathToMoveAlong(rawValue: Int(arc4random_uniform(4))) {
             switch pathToMoveOn {
@@ -98,7 +69,6 @@ class FlyingObject: SKShapeNode {
         }
         return (CGPointMake(0, 0), CGPointMake(0,0))
     }
-    
     
     func pointAlongLeftBound(bounds: CGRect) -> CGPoint {
         return CGPointMake(0 - self.frame.width, CGFloat(arc4random_uniform(UInt32(bounds.height))))
