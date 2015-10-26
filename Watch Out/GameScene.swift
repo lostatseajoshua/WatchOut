@@ -35,6 +35,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         {
             let location = touch.locationInNode(self)
             let node = nodeAtPoint(location)
+            
             if gameStarted
             {
                 if node.name == circleNode.name!
@@ -44,7 +45,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.selectedNode = nil
                 }
             } else {
-                beginGameStartAnimation(location)
+                if node.name == howToPlayLabelNodeName {
+                    removeGameIntro()
+                } else {
+                    beginGameStartAnimation(location)
+                }
             }
         }
     }
@@ -103,6 +108,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.createScoreLabel()
                 self.createFlyingObjects()
                 self.createGameTimer()
+                
+                let powerUpNode = PowerUpNode(bounds: self.view!.bounds)
+                self.addChild(powerUpNode)
             })
             self.addChild(circleNode)
         }
@@ -110,30 +118,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func gameIntroSetup() {
         let titleLabel = SKLabelNode(text: titleString)
-        titleLabel.fontSize = self.frame.width / 10
+        titleLabel.fontSize = self.frame.width / 7
         titleLabel.position = CGPointMake(self.frame.midX, self.frame.midY)
         titleLabel.name = titleLabelNodeName
         
         let subtitleLabel = SKLabelNode(text: subtitleString)
-        subtitleLabel.fontSize = self.frame.width / 20
+        subtitleLabel.fontSize = self.frame.width / 13
         subtitleLabel.position = CGPointMake(self.frame.midX, self.frame.midY - titleLabel.frame.height)
         subtitleLabel.name = subtitleLabelNodeName
         
+        
+        let howToPlayLabel = SKLabelNode(text: howToPlayString)
+        howToPlayLabel.fontSize = self.frame.width / 14
+        howToPlayLabel.position = CGPointMake(self.frame.midX, self.frame.minY + (howToPlayLabel.frame.height * 1.5))
+        howToPlayLabel.name = howToPlayLabelNodeName
+        howToPlayLabel.fontColor = UIColor.whiteColor()
+        
         self.addChild(titleLabel)
         self.addChild(subtitleLabel)
+        self.addChild(howToPlayLabel)
 
     }
     
     func removeGameIntro() {
         let titleNode = self.childNodeWithName(titleLabelNodeName)
         let subtitleNode = self.childNodeWithName(subtitleLabelNodeName)
+        let howToPlayNode = self.childNodeWithName(howToPlayLabelNodeName)
         
         let fadeOutAction = SKAction.fadeOutWithDuration(2.0)
         
         titleNode?.runAction(fadeOutAction)
         subtitleNode?.runAction(fadeOutAction)
+        howToPlayNode?.runAction(fadeOutAction)
         titleNode?.removeFromParent()
         subtitleNode?.removeFromParent()
+        howToPlayNode?.removeFromParent()
+        
     }
     
     func gameOverSetup() {

@@ -15,10 +15,12 @@ let subtitleLabelNodeName = "subtitleLabel"
 let scoreLabelNodeName = "scoreLabel"
 let gameOverLabelNodeName = "gameoverLabel"
 let gameOverScoreLabelNodeName = "gameoverScoreLabel"
+let howToPlayLabelNodeName = "howToPlayLabel"
 
 //MARK: Node bit masks
 let circleBitMask: UInt32 = 0x1
 let flyingObjectBitMask: UInt32 = 0x2
+let powerUpBitMask: UInt32 = 0x3
 
 //MARK: SKAction keys
 let flyingObjectCreationActionKey = "createObjects"
@@ -28,6 +30,7 @@ let subtitleString = NSLocalizedString("tap to begin", comment: "Instructing the
 let titleString = NSLocalizedString("Watch Out", comment: "The title of the game")
 let gameOverString = NSLocalizedString("Game Over", comment: "Game has ended")
 let scoreString = NSLocalizedString("Score", comment: "Title to indicate the score of the game")
+let howToPlayString = NSLocalizedString("How to play", comment: "Button label to give instructions to user on the game")
 
 //MARK: Selector
 let createFlyingNodeSelector: Selector = "createFlyingNode"
