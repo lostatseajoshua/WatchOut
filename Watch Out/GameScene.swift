@@ -71,16 +71,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     //MARK: Object Creation
     
     func createFlyingObjects() {
-        let createFlyingNodeAction = SKAction.performSelector(createFlyingNodeSelector, onTarget: self)
+        let createFlyingNodeAction = SKAction.runBlock({
+            let node = FlyingObject(bounds: self.view!.bounds)
+            self.addChild(node)
+        })
         self.flyingObjectCreationWaitDuration = flyingObjectCreationWaitDuration - 0.1
         let sequence = SKAction.sequence([createFlyingNodeAction,SKAction.waitForDuration((flyingObjectCreationWaitDuration - 0.1))])
         let repeatAction = SKAction.repeatActionForever(sequence)
         self.runAction(repeatAction, withKey: flyingObjectCreationActionKey)
-    }
-    
-    func createFlyingNode() {
-        let node = FlyingObject(bounds: self.view!.bounds)
-        self.addChild(node)
     }
     
     func createBackground() {
@@ -93,6 +91,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabelNode.color = UIColor.whiteColor()
         scoreLabelNode.name = scoreLabelNodeName
         self.addChild(scoreLabelNode)
+    }
+    
+    func createPowerUps() {
+        
+        let createPowerUpAction = SKAction.runBlock({
+        
+            //create random int to choose power up
+            let randomInt = arc4random_uniform(4)
+            
+            let powerUpNode: PowerUpNode
+            
+            if let powerUpType = PowerUpType(rawValue: Int(randomInt)) {
+                powerUpNode = PowerUpNode(bounds: self.view!.bounds, withPowerUpType: powerUpType)
+            } else  {
+                powerUpNode = PowerUpNode(bounds: self.view!.bounds, withPowerUpType: .Shrink)
+            }
+            
+            self.addChild(powerUpNode)
+        })
+        
+        let waitDurationAction = SKAction.waitForDuration(5, withRange: 9)
+        
+        let sequenceAction = SKAction.sequence([waitDurationAction,createPowerUpAction])
+        let repeatAction = SKAction.repeatActionForever(sequenceAction)
+        self.runAction(repeatAction, withKey: powerUpObjectCreationActionKey)
     }
     
     //MARK: Utilites
@@ -109,9 +132,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.createScoreLabel()
                 self.createFlyingObjects()
                 self.createGameTimer()
-                
-                let powerUpNode = PowerUpNode(bounds: self.view!.bounds, withPowerUpType: PowerUpType.Shrink)
-                self.addChild(powerUpNode)
+                self.createPowerUps()
             })
             self.addChild(circleNode)
         }

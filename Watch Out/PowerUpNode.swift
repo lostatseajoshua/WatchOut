@@ -190,7 +190,7 @@ class PowerUpNode: SKShapeNode, RandomPositionGenerator {
     }
 }
 
-enum PowerUpType {
+enum PowerUpType: Int {
     case Remove
     case Shrink
     case Invincible

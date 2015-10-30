@@ -26,6 +26,7 @@ let powerUpBitMask: UInt32 = 0x3
 
 //MARK: SKAction keys
 let flyingObjectCreationActionKey = "createObjects"
+let powerUpObjectCreationActionKey = "createPowerUp"
 
 //MARK: NSLocalizedStrings
 let subtitleString = NSLocalizedString("tap to begin", comment: "Instructing the user to tap the screen to begin the game.")
@@ -35,6 +36,5 @@ let scoreString = NSLocalizedString("Score", comment: "Title to indicate the sco
 let howToPlayString = NSLocalizedString("How to play", comment: "Button label to give instructions to user on the game")
 
 //MARK: Selector
-let createFlyingNodeSelector: Selector = "createFlyingNode"
 let appendScoreSelector: Selector = "appendScore"
 let reverseInvinciblilityOnUserSelector: Selector = "reverseInvinciblilityOnUserNode"
