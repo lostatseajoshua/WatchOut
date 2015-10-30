@@ -28,7 +28,7 @@ class FlyingObject: SKShapeNode, RandomPositionGenerator {
         self.fillColor = self.color
         self.strokeColor = self.color
         
-        self.name = "FlyingObject"
+        self.name = flyingObjectNodeName
         
         //Creation action
         

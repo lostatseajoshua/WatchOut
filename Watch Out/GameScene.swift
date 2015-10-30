@@ -48,6 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if node.name == howToPlayLabelNodeName {
                     removeGameIntro()
                 } else {
+                    gameLogic.resetScore()
                     beginGameStartAnimation(location)
                 }
             }
@@ -109,7 +110,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 self.createFlyingObjects()
                 self.createGameTimer()
                 
-                let powerUpNode = PowerUpNode(bounds: self.view!.bounds)
+                let powerUpNode = PowerUpNode(bounds: self.view!.bounds, withPowerUpType: PowerUpType.Shrink)
                 self.addChild(powerUpNode)
             })
             self.addChild(circleNode)
@@ -218,9 +219,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    //MARK: Node manipulation
+    
+    func removeAllFlyingObjectNodes() {
+        for node in self.children {
+            if node is FlyingObject {
+                node.removeFromParent()
+            }
+        }
+    }
+    
+    
     //MARK: SKPhysicsContactDelegate
     func didBeginContact(contact: SKPhysicsContact) {
-        gameOver()
+        if let bodyANodeName = contact.bodyA.node?.name, let bodyBNodeName = contact.bodyB.node?.name {
+            if bodyANodeName == circleNodeName || bodyBNodeName == circleNodeName {
+                if bodyANodeName == flyingObjectNodeName || bodyBNodeName == flyingObjectNodeName {
+                    gameOver()
+                } else if bodyANodeName == powerUpNodeName || bodyBNodeName == powerUpNodeName {
+                    if contact.bodyA.node is PowerUpNode {
+                        (contact.bodyA.node as! PowerUpNode).performPowerUp()
+                        return
+                    }
+                    if contact.bodyB.node is PowerUpNode {
+                        (contact.bodyB.node as! PowerUpNode).performPowerUp()
+                        return
+                    }
+                }
+            }
+        }
     }
 
 }

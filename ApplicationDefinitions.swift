@@ -16,6 +16,8 @@ let scoreLabelNodeName = "scoreLabel"
 let gameOverLabelNodeName = "gameoverLabel"
 let gameOverScoreLabelNodeName = "gameoverScoreLabel"
 let howToPlayLabelNodeName = "howToPlayLabel"
+let flyingObjectNodeName = "flyingObject"
+let powerUpNodeName = "powerUp"
 
 //MARK: Node bit masks
 let circleBitMask: UInt32 = 0x1
@@ -35,3 +37,4 @@ let howToPlayString = NSLocalizedString("How to play", comment: "Button label to
 //MARK: Selector
 let createFlyingNodeSelector: Selector = "createFlyingNode"
 let appendScoreSelector: Selector = "appendScore"
+let reverseInvinciblilityOnUserSelector: Selector = "reverseInvinciblilityOnUserNode"
